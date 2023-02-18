@@ -1,0 +1,124 @@
+#bigconternt{
+    
+    width: 1242px;
+    height: 2208px;
+    background-image: url(./image/背景.png);
+    position: relative;
+    }
+.table1{
+        position:relative;
+        font-size: 50px;
+        top: 5%;
+    }
+.table2{
+        position:relative;
+        font-size: 28px;
+        margin-top:0%;
+        border: 1px;
+    }
+.table3{
+        position:relative;
+        font-size: 28px;
+        margin-top:5%;
+        border: 1px;
+    }
+.table5{
+        position:relative;
+        font-size: 28px;
+        margin-top:5%;
+        border: 1px;
+    }
+.table6{
+        position:relative;
+        font-size: 28px;
+        margin-top:5%;
+        border: 1px;
+    }
+.title{
+    position:relative;
+    color: green;
+    top: 15%;
+    font-size: 70px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bolder;
+    
+} 
+.roleselect{
+    position:relative;   
+    top: 400px;;
+
+}
+.disp1{  
+    position:relative;
+   
+    top: 20%;
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight:bold;
+    max-width: 800px;
+    text-align:left;
+    margin: 0 auto;
+}
+.disp2{  
+    position:relative;
+   
+    top: 20%;
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight:bold;
+    max-width: 800px;
+    height: 140px;
+    text-align:left;
+    margin: 0 auto;
+    color: aliceblue;
+}
+button{
+    position:relative;  
+    top: 20%;
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+
+    max-width: 800px;
+    text-align:center;
+    margin: 0 auto;
+
+}
+button:active{
+      background-color: rgb(142, 10, 237);
+}
+.disp3{  
+    position:relative;
+    top: 23%;
+    width: 827px;
+    height: 195px;
+     
+    margin: 0 auto;
+    background-image: url(./image/searchN.png);
+}
+.disp4{  
+    position:relative;
+    top: 25%;
+    width: 827px;
+    height: 195px;
+     
+    margin: 0 auto;
+    background-image: url(./image/searchN.png);
+}
+.disp5{  
+    position:relative;
+    top: 27%;
+    width: 827px;
+    height: 195px;
+     
+    margin: 0 auto;
+    background-image: url(./image/searchN.png);
+}
+.disp6{  
+    position:relative;
+    top: 29%;
+    width: 827px;
+    height: 195px;
+     
+    margin: 0 auto;
+    background-image: url(./image/searchN.png);
+}

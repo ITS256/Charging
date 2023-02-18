@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=0.1,user-scalable=no"> -->
+    <!-- 在线引入jquery -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.js"></script>
+    <!-- 在线引入web3.min.js -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <title>Search Results</title>
+    <link href="./search0.css" type="text/css" rel="stylesheet">
+
+
+</head>
+<!-- <body background="./image/背景.png" style="background-repeat: no-repeat;width:100%;margin:0 auto;min-width:320px;max-width:640px;font-size:14px;background-attachment: fixed;height: 2000px;"> -->
+
+<body style="text-align:center">
+    <div  id="bigconternt">
+        <div class="title"> Search Results</div>
+        <div class="disp1">4 Available charge posts
+        </div>
+
+        <div class="disp2">
+            <table class="table1" align="left">
+                <tr width="700" height="180">
+                    <th> <button id=" button1" onclick=" "> <img src="./image/recommend.png" alt=""></button> </th>
+                    <th> <button id=" button2" onclick=" "> <img src="./image/distance.png" alt=""></button> </th>
+                    <th> <button id=" button3" onclick=" "> <img src="./image/price.png" alt=""></button> </th>
+                </tr>
+            </table>
+        </div>
+        <div class="disp3">
+            <table class="table2" align="left" id="hobby">
+                <tr width="700" height="30" valign="top">
+                    <th width="200" >  </th>
+                    <th width="100"> Jack001</th>
+                    <th width="30" >  </th>                   
+                    <th width="200"> level-88 </th>
+                    <th width="20" >  </th>                   
+                    <th width="200"> 7kW </th>                              
+                </tr>
+                <tr width="700" height="30">
+                    <td width="200" >  </td>
+                    <td width="100"> Time: </td>
+                    <td width="20" >  </td>                   
+                    <td width="200"> 9:00-23:00 </td>
+                    <td width="20" >  </td>                   
+                    <td width="200">  </td>                              
+                </tr>
+                <tr width="700" height="30">
+                    <td width="200" >  </td>
+                    <td width="100"> Location: </td>
+                    <td width="20" >  </td>                   
+                    <td width="200"> No.2 Sipailou </td>
+                    <td width="20" >  </td>                   
+                    <td width="200">  </td>                              
+                </tr>
+                <tr width="700" height="30">
+                    <td width="200" >  </td>
+                    <td width="100"> Price: </td>
+                    <td width="20" >  </td>                   
+                    <td width="200"> 1 CC/kWh </td>
+                    <td width="20" >  </td>                   
+                    <td width="200">  </td>                              
+                </tr>              
+            </table>       
+        </div>
+        <div class="disp4">
+            <table class="table3" align="left" id="hobby">
+                <tr width="700" height="30" valign="top">
+                    <th width="200" >  </th>
+                    <th width="100"> Mike00</th>
+                    <th width="30" >  </th>                   
+                    <th width="200"> level-86 </th>
+                    <th width="20" >  </th>                   
+                    <th width="200"> 7kW </th>                              
+                </tr>
+                <tr width="700" height="30">
+                    <td width="200" >  </td>
+                    <td width="100"> Time: </td>
+                    <td width="20" >  </td>                   
+                    <td width="200"> 10:00-20:00 </td>
+                    <td width="20" >  </td>                   
+                    <td width="200">  </td>                              
+                </tr>
+                <tr width="700" height="30">
+                    <td width="200" >  </td>
+                    <td width="100"> Location: </td>
+                    <td width="20" >  </td>                   
+                    <td width="200"> No.3 Sipailou </td>
+                    <td width="20" >  </td>                   
+                    <td width="200">  </td>                              
+                </tr>
+                <tr width="700" height="30">
+                    <td width="200" >  </td>
+                    <td width="100"> Price: </td>
+                    <td width="20" >  </td>                   
+                    <td width="200"> 1.1 CC/kWh </td>
+                    <td width="20" >  </td>                   
+                    <td width="200">  </td>                              
+                </tr>              
+            </table>       
+        </div>         
+        <div class="disp5">
+            <table class="table5" align="left" id="hobby">
+                <tr width="700" height="30" valign="top">
+                    <th width="200" >  </th>
+                    <th width="100"> Tracy</th>
+                    <th width="30" >  </th>                   
+                    <th width="200"> level-90 </th>
+                    <th width="20" >  </th>                   
+                    <th width="200"> 7kW </th>                              
+                </tr>
+                <tr width="700" height="30">
+                    <td width="200" >  </td>
+                    <td width="100"> Time: </td>
+                    <td width="20" >  </td>                   
+                    <td width="200"> 8:30-19:30 </td>
+                    <td width="20" >  </td>                   
+                    <td width="200">  </td>                              
+                </tr>
+                <tr width="700" height="30">
+                    <td width="200" >  </td>
+                    <td width="100"> Location: </td>
+                    <td width="20" >  </td>                   
+                    <td width="200"> No.4 Sipailou </td>
+                    <td width="20" >  </td>                   
+                    <td width="200">  </td>                              
+                </tr>
+                <tr width="700" height="30">
+                    <td width="200" >  </td>
+                    <td width="100"> Price: </td>
+                    <td width="20" >  </td>                   
+                    <td width="200"> 0.9 CC/kWh </td>
+                    <td width="20" >  </td>                   
+                    <td width="200">  </td>                              
+                </tr>              
+            </table>       
+        </div> 
+        <div class="disp6">
+            <table class="table6" align="left" id="hobby">
+                <tr width="700" height="30" valign="top">
+                    <th width="200" >  </th>
+                    <th width="100"> Jane88</th>
+                    <th width="30" >  </th>                   
+                    <th width="200"> level-82 </th>
+                    <th width="20" >  </th>                   
+                    <th width="200"> 7kW </th>                              
+                </tr>
+                <tr width="700" height="30">
+                    <td width="200" >  </td>
+                    <td width="100"> Time: </td>
+                    <td width="20" >  </td>                   
+                    <td width="250"> 11:00-03:00(+1) </td>
+                    <td width="20" >  </td>                   
+                    <td width="200">  </td>                              
+                </tr>
+                <tr width="700" height="30">
+                    <td width="200" >  </td>
+                    <td width="100"> Location: </td>
+                    <td width="20" >  </td>                   
+                    <td width="200"> No.5 Sipailou </td>
+                    <td width="20" >  </td>                   
+                    <td width="200">  </td>                              
+                </tr>
+                <tr width="700" height="30">
+                    <td width="200" >  </td>
+                    <td width="100"> Price: </td>
+                    <td width="20" >  </td>                   
+                    <td width="200"> 1.2 CC/kWh </td>
+                    <td width="20" >  </td>                   
+                    <td width="200">  </td>                              
+                </tr>              
+            </table>       
+        </div> 
+    </div>
+
+
+     
+
+
+
+
+    <script type="text/javascript">
+       
+    function show4(){
+    var result=new Array("1","2","3","4");
+    var str="<tr>"+"<th>"+"<input type='radio' value='123' name='choose' checked=checked'/>"+"<th>";
+    for (var i=0;i<result.length;i++){
+     
+        str+='<th>'+result[i]+'</th>';
+
+
+
+    }
+    str+="</tr>"
+    document.getElementById("hobby").innerHTML+=str;
+
+
+}
+
+
+    </script>
+</body>
+
+</html>

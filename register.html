@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=0.1,user-scalable=no"> -->
+    <!-- 在线引入jquery -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.js"></script>
+    <!-- 在线引入web3.min.js -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <title>welcome to Charging !!!</title>
+    <link href="./register.css" type="text/css" rel="stylesheet">
+
+
+</head>
+<!-- <body background="./image/背景.png" style="background-repeat: no-repeat;width:100%;margin:0 auto;min-width:320px;max-width:640px;font-size:14px;background-attachment: fixed;height: 2000px;"> -->
+
+<body style="text-align:center">
+    <div id="bigconternt">
+        <div class="title"> Welcome to Easy-Charing</div>
+        <div class="notice">If you don't have an account for the system, please input the Username and Keyword below and
+            click REGISTER.
+        </div>
+        <label>
+            <div class="inputname">Account:<input type="text" name="Username" id="Username"></div>
+            <div class="inputname">Password:<input type="text" name="Keyword" id="Keyword"></div>
+        </label>
+
+        <div>
+            <button onclick="login_account()"> <img src="./image/login.png" alt=""></button>
+        </div>
+        <div style="height: 30px;"> </div>
+        <div>
+            <button onclick="register()" onclick="document.getElementById('Keyword').value=''">  <img src="./image/register.png" alt=""></button>
+        </div>
+
+
+    </div>
+
+    <script type="text/javascript">
+        let contract
+        let web3
+        $(function () {
+            // 初始化 Web3
+            if (typeof web3 !== 'undefined') {
+                web3 = new Web3(web3.currentProvider);
+            } else {
+                web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
+            }
+
+            // 测试是否连接成功
+            web3.eth.net.isListening()
+                .then(() => console.log('is connected'))
+                .catch(e => console.log('Wow. Something went wrong: ' + e));
+            // 设置合约 ABI
+            var contractAbi =
+                [
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "string",
+                                "name": "_accountName",
+                                "type": "string"
+                            },
+                            {
+                                "internalType": "string",
+                                "name": "_accountKey",
+                                "type": "string"
+                            }
+                        ],
+                        "name": "add_account",
+                        "outputs": [],
+                        "stateMutability": "nonpayable",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "uint256",
+                                "name": "ID",
+                                "type": "uint256"
+                            }
+                        ],
+                        "name": "choose_charging",
+                        "outputs": [
+                            {
+                                "internalType": "bool",
+                                "name": "",
+                                "type": "bool"
+                            }
+                        ],
+                        "stateMutability": "nonpayable",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "uint256",
+                                "name": "time_hour",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "time_minutes",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "time_length",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "location1",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "location2",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "price",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "power",
+                                "type": "uint256"
+                            }
+                        ],
+                        "name": "sharer_add_information",
+                        "outputs": [],
+                        "stateMutability": "nonpayable",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "uint256",
+                                "name": "time_hour",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "time_minutes",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "time_length",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "location1",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "location2",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "price",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "power",
+                                "type": "uint256"
+                            }
+                        ],
+                        "name": "user_need",
+                        "outputs": [
+                            {
+                                "internalType": "uint256[10]",
+                                "name": "",
+                                "type": "uint256[10]"
+                            }
+                        ],
+                        "stateMutability": "nonpayable",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "string",
+                                "name": "accountName",
+                                "type": "string"
+                            },
+                            {
+                                "internalType": "string",
+                                "name": "accountKey",
+                                "type": "string"
+                            }
+                        ],
+                        "name": "apply_account",
+                        "outputs": [
+                            {
+                                "internalType": "uint256",
+                                "name": "",
+                                "type": "uint256"
+                            }
+                        ],
+                        "stateMutability": "pure",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "address",
+                                "name": "id",
+                                "type": "address"
+                            }
+                        ],
+                        "name": "get_account",
+                        "outputs": [
+                            {
+                                "internalType": "string",
+                                "name": "",
+                                "type": "string"
+                            }
+                        ],
+                        "stateMutability": "view",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "uint256",
+                                "name": "ID",
+                                "type": "uint256"
+                            }
+                        ],
+                        "name": "get_charging",
+                        "outputs": [
+                            {
+                                "components": [
+                                    {
+                                        "internalType": "address",
+                                        "name": "sendadd",
+                                        "type": "address"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "time_hour",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "time_minutes",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "time_length",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "location1",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "location2",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "price",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "power",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "bool",
+                                        "name": "flag",
+                                        "type": "bool"
+                                    }
+                                ],
+                                "internalType": "struct Apply.Person",
+                                "name": "",
+                                "type": "tuple"
+                            }
+                        ],
+                        "stateMutability": "view",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "string",
+                                "name": "_accountName",
+                                "type": "string"
+                            },
+                            {
+                                "internalType": "string",
+                                "name": "_accountKey",
+                                "type": "string"
+                            }
+                        ],
+                        "name": "login_account",
+                        "outputs": [
+                            {
+                                "internalType": "bool",
+                                "name": "",
+                                "type": "bool"
+                            }
+                        ],
+                        "stateMutability": "view",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [],
+                        "name": "send_addr_to_sharer",
+                        "outputs": [
+                            {
+                                "components": [
+                                    {
+                                        "internalType": "address",
+                                        "name": "sendadd",
+                                        "type": "address"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "time_hour",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "time_minutes",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "time_length",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "location1",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "location2",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "price",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "power",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "bool",
+                                        "name": "flag",
+                                        "type": "bool"
+                                    }
+                                ],
+                                "internalType": "struct Apply.Person",
+                                "name": "",
+                                "type": "tuple"
+                            }
+                        ],
+                        "stateMutability": "view",
+                        "type": "function"
+                    }
+                ]
+            // 设置合约地址
+            let contractAddress = '0x41514015165E9c42134c7Dfb233D6fF1C5A35Cba';
+            // 获取智能合约对象
+            contract = new web3.eth.Contract(contractAbi, contractAddress);
+        })
+        //return 1:success
+        //return 2: name length error
+        //return 3: name character illegal
+        //return 4: key length error
+        //return 5: key character illegal  
+        function register() {
+            // from是Ganache模拟的一个账户地址
+            contract.methods.applyAccount($('#Username').val(), $('#Keyword').val()).call({ from: '0x499d50589c14fD925D3B08ae2D5251697e9F7aB4' })
+                .then(function (result) {
+                    console.log(result)
+                    show1(result);
+                });
+            document.getElementById('Keyword').value = '';
+            document.getElementById('Username').value = '';
+        }
+        function show1(result) {
+            switch (result) {
+                case "1":
+                    addNameAndKey();
+                    alert("register success,please log in again"); // 当表达式的结果等于 value1 时，则执行该代码
+                   
+                    break;
+                case "2":
+                    alert("name length error"); // 当表达式的结果等于 value2 时，则执行该代码
+                    break;
+                case "3":
+                    alert("name character illegal");  // 当表达式的结果等于 valueN 时，则执行该代码
+                    break;
+                case "4":
+                    alert("key length error");  // 当表达式的结果等于 valueN 时，则执行该代码
+                    break;
+                default:
+                    alert("key character illegal");  // 如果没有与表达式相同的值，则执行该代码
+            }
+        }
+        // 提交事假
+        function addNameAndKey() {
+            contract.methods.addAccount($('#Username').val(), $('#Keyword').val()).send({ from: '0x4eDaA5b77A838F308B8E438b87B94Fd834f9E774', gas: 1000000 })
+                .then(function (result) {
+                    console.log(result)
+
+                });
+        }
+        // login
+        function login_account() {
+            contract.methods.loginAccount($('#Username').val(), $('#Keyword').val()).call({ from: '0x4eDaA5b77A838F308B8E438b87B94Fd834f9E774' })
+                .then(function (result) {
+                    console.log(result)
+                    show2(result);
+                });
+        }
+        function show2(result) {
+            if (result) {
+
+                alert("login success"); // 当表达式的结果等于 value1 时，则执行该代码
+               
+                window.open("fill_in.html",target="_self");
+            }
+            else {
+                alert("login fail");
+                document.getElementById('Keyword').value = '';
+                document.getElementById('Username').value = '';
+            }
+
+        }
+
+
+    </script>
+</body>
+
+</html>
